@@ -1,0 +1,16 @@
+#!/bin/bash
+
+name="nmap-osscan.$@"
+tmp="/tmp/.n"
+out="../out/$name"
+
+nmap \
+    -oX $tmp \
+    -T4 \
+    -A \
+    $@
+
+cat $tmp | xq > $out
+echo "Wrote $out"
+
+
